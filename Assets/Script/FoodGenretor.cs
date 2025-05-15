@@ -12,7 +12,7 @@ public class FoodGenerator : MonoBehaviour
 
     void Update()
     {
-        if (frame % 60 == 0)
+        if (frame % 30 == 0 && TimeKeeper.countDown > 0)
         {
             GameObject selectedFood = SelectFoodByProbability();
             GameObject newFood = Instantiate(selectedFood, new Vector3(Random.Range(-9f, 9f), 7, 0), Quaternion.identity);
@@ -23,7 +23,7 @@ public class FoodGenerator : MonoBehaviour
         {
             if (foodList[i] == null) continue;
 
-            if (foodList[i].transform.position.y < -9)
+            if (foodList[i].transform.position.y < -9 || TimeKeeper.countDown <= 0)
             {
                 Destroy(foodList[i]);
                 foodList.RemoveAt(i);
