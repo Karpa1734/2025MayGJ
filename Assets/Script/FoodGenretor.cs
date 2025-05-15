@@ -7,15 +7,38 @@ public class FoodGenerator : MonoBehaviour
 
     [SerializeField] GameObject[] FoodPrefabs;  // 5種類のFoodプレハブを入れる
     [SerializeField] float[] probabilities = new float[5] { 0.4f, 0.25f, 0.15f, 0.1f, 0.1f };
+    [SerializeField] float spawnRangeX = 4f; // 前の食べ物からどれだけ離れて良いか
 
     List<GameObject> foodList = new List<GameObject>();
+    float lastFoodX = 0f; // 直前の食べ物のX位置
 
     void Update()
     {
         if (frame % 30 == 0 && TimeKeeper.countDown > 0)
         {
             GameObject selectedFood = SelectFoodByProbability();
-            GameObject newFood = Instantiate(selectedFood, new Vector3(Random.Range(-9f, 9f), 7, 0), Quaternion.identity);
+
+            // 最初の一回だけ完全ランダム
+            if (foodList.Count == 0)
+            {
+                lastFoodX = Random.Range(-8f, 8f);
+            }
+            else
+            {
+                float minX = Mathf.Max(-8f, lastFoodX - spawnRangeX);
+                float maxX = Mathf.Min(8f, lastFoodX + spawnRangeX);
+                lastFoodX = Random.Range(minX, maxX);
+            }
+
+            Vector3 spawnPos = new Vector3(lastFoodX, 7, 0);// Food生成部分に以下を追加
+            GameObject newFood = Instantiate(selectedFood, spawnPos, Quaternion.identity);
+
+            // 重力スケールをランダムに設定（例：0.5 ～ 1.5）
+            Rigidbody2D rb = newFood.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.gravityScale = Random.Range(0.5f, 1.5f);
+            }
             foodList.Add(newFood);
         }
 
@@ -35,7 +58,7 @@ public class FoodGenerator : MonoBehaviour
 
     GameObject SelectFoodByProbability()
     {
-        float rand = Random.value; // 0～1のランダム値
+        float rand = Random.value;
         float cumulative = 0f;
 
         for (int i = 0; i < probabilities.Length; i++)
@@ -47,7 +70,6 @@ public class FoodGenerator : MonoBehaviour
             }
         }
 
-        // 万が一のため最後のFoodを返す
         return FoodPrefabs[FoodPrefabs.Length - 1];
     }
 }

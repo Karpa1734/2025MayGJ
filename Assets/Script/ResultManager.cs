@@ -10,6 +10,6 @@ public class Rsultmanager : MonoBehaviour
     }
     public void ReStart()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
