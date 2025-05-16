@@ -20,7 +20,7 @@ public class Result : MonoBehaviour
             resultPanel.SetActive(true); 
             if (playerMove != null && scoreText != null)
             {
-                scoreText.text = "摂取カロリー：" + playerMove.CurrentScore.ToString() + "cal";
+                scoreText.text = "摂取カロリー：" + playerMove.CurrentScore.ToString() + "kcal";
             }
         }
         if (TimeKeeper.countDown < 0)

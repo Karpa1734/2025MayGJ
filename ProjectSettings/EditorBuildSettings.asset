@@ -12,8 +12,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 34a8b1e4a8352354c84be9064eaeac3e
   - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 35b4614da5a135945ab37dc212f6c789
+  - enabled: 1
+    path: Assets/Scenes/Time.unity
+    guid: 6f5fcc6dab33d4e4aa7d7242c830ecc4
+  - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: b8160e16db942974188b675c72e497bb
+  - enabled: 1
+    path: Assets/Scenes/Survival.unity
+    guid: 9a5bbda7669109d4ea65cf6e244d08a5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

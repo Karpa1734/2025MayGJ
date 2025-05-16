@@ -18,10 +18,11 @@ public class Food : MonoBehaviour
         switch (FoodCode)
         {
             case 1: Score = 100; break;
-            case 2: Score = 150; break;
-            case 3: Score = 250; break;
-            case 4: Score = 350; break;
-            case 5: Score = 500; break;
+            case 2: Score = 200; break;
+            case 3: Score = 300; break;
+            case 4: Score = 500; break;
+            case 5: Score = -200; break;
+            case 6: Score = 0; break;
             default: Score = 0; break;
         }
     }

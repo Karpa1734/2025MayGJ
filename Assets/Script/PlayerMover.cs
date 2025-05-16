@@ -1,3 +1,4 @@
+using KanKikuchi.AudioManager;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Start()
     {
+        BGMManager.Instance.Play(BGMPath.STAGE);
         Application.targetFrameRate = 60;
     }
     void Update()

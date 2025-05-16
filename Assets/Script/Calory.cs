@@ -27,6 +27,6 @@ public class Calory : MonoBehaviour
         }
 
         // 表示は整数値でOK（端数切り捨て）
-        scoreText.text = Mathf.FloorToInt(displayedScore).ToString() + "cal";
+        scoreText.text = Mathf.FloorToInt(displayedScore).ToString() + "kcal";
     }
 }

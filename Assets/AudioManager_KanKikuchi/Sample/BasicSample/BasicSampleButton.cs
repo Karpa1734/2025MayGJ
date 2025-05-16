@@ -27,7 +27,7 @@ public class BasicSampleButton : MonoBehaviour {
   /// BGM1を再生
   /// </summary>
   public void PlayBGM1() {
-    PlayBGM(BGMPath.FANTASY14);
+    PlayBGM(BGMPath.TITLE);
   }
   
   /// <summary>
@@ -41,7 +41,7 @@ public class BasicSampleButton : MonoBehaviour {
   /// 重複するBGMを再生
   /// </summary>
   public void PlayDuplicateBGM() {
-    PlayBGM(BGMPath.HEARTBEAT01, 0.5f, true);
+    PlayBGM(BGMPath.TITLE, 0.5f, true);
   }
 
   //BGMを再生
