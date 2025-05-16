@@ -8,6 +8,7 @@ public class FoodGenerator : MonoBehaviour
     [SerializeField] GameObject[] FoodPrefabs;  // 5種類のFoodプレハブを入れる
     [SerializeField] float[] probabilities = new float[5] { 0.4f, 0.25f, 0.15f, 0.1f, 0.1f };
     [SerializeField] float spawnRangeX = 4f; // 前の食べ物からどれだけ離れて良いか
+    [SerializeField] private falloutCount falloutCounter;
 
     List<GameObject> foodList = new List<GameObject>();
     float lastFoodX = 0f; // 直前の食べ物のX位置
@@ -42,16 +43,7 @@ public class FoodGenerator : MonoBehaviour
             foodList.Add(newFood);
         }
 
-        for (int i = foodList.Count - 1; i >= 0; i--)
-        {
-            if (foodList[i] == null) continue;
-
-            if (foodList[i].transform.position.y < -9 || TimeKeeper.countDown <= 0)
-            {
-                Destroy(foodList[i]);
-                foodList.RemoveAt(i);
-            }
-        }
+        HandleGameOver();
         frame++;
     }
 
@@ -69,5 +61,19 @@ public class FoodGenerator : MonoBehaviour
             }
         }
         return FoodPrefabs[FoodPrefabs.Length - 1];
+    }
+
+    void HandleGameOver()
+    {
+        for (int i = foodList.Count - 1; i >= 0; i--)
+        {
+            if (foodList[i] == null) continue;
+
+            if (foodList[i].transform.position.y < -9 || TimeKeeper.countDown <= 0 || falloutCounter.IsGameOver)
+            {
+                Destroy(foodList[i]);
+                foodList.RemoveAt(i);
+            }
+        }
     }
 }

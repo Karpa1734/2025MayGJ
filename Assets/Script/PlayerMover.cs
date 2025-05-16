@@ -5,16 +5,19 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float speed = 10f;
     [SerializeField] float minX = -8f;
     [SerializeField] float maxX = 8f;
+    [SerializeField] private falloutCount falloutCounter;
     public int CurrentScore = 0;
 
-    private void Start()
+    void Start()
     {
         Application.targetFrameRate = 60;
     }
+
     void Update()
     {
         if (TimeKeeper.countDown > 0)
         {
+            if (falloutCounter != null && falloutCounter.IsGameOver) { return; }
             float moveInput = Input.GetAxisRaw("Horizontal");
             Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
             transform.position += move;

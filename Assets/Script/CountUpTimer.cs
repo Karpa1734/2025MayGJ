@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class CountUpTimer : MonoBehaviour
 {
     [SerializeField] Text countupText;
+    [SerializeField] private falloutCount falloutCounter;
     public static int countUp = 0;
+    public int seconds = 0;
+    public int frames = 0;
 
     private void Start()
     {
@@ -16,11 +19,18 @@ public class CountUpTimer : MonoBehaviour
 
     void Update()
     {
-        // 常にカウントアップ
+        if (!falloutCounter.IsGameOver)
+        {
+            SuvaivalCount();
+        }
+    }
+
+    void SuvaivalCount()
+    {
         countUp++;
 
-        int seconds = countUp / 60;
-        int frames = countUp % 60;
+        seconds = countUp / 60;
+        frames = countUp % 60;
 
         // 00:00 → ... の形式で表示（秒 : フレーム）
         countupText.text = string.Format("{0:00}:{1:00}", seconds, frames);

@@ -4,7 +4,18 @@ using System;
 public class falloutCount : MonoBehaviour
 {
     private int falloutObjectCount = 0;
-    public static event Action OnGameOver; // イベント
+    private static event Action OnGameOver; // イベント
+    public bool IsGameOver = false;
+
+    void Start()
+    {
+        falloutCount.OnGameOver += () => { IsGameOver = true; };
+    }
+
+    void OnDestroy()
+    {
+        falloutCount.OnGameOver -= () => { IsGameOver = true; };
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

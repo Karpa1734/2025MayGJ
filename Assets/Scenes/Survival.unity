@@ -280,6 +280,7 @@ MonoBehaviour:
   - 0.1
   - 0.05
   spawnRangeX: 4
+  falloutCounter: {fileID: 1310233534}
 --- !u!1 &217681779
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +475,8 @@ MonoBehaviour:
   scoreText: {fileID: 1354524058}
   TimeText: {fileID: 1380991083}
   playerMove: {fileID: 1872317913}
+  falloutCounter: {fileID: 1310233534}
+  CountUpTime: {fileID: 1192863298}
 --- !u!1 &632246428
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +843,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countupText: {fileID: 1423371578}
+  falloutCounter: {fileID: 1310233534}
+  seconds: 0
+  frames: 0
 --- !u!1 &1310233531
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa05f393e8757874189d251ea381f5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsGameOver: 0
 --- !u!4 &1310233535
 Transform:
   m_ObjectHideFlags: 0
@@ -1840,6 +1847,7 @@ MonoBehaviour:
   speed: 12
   minX: -8
   maxX: 8
+  falloutCounter: {fileID: 1310233534}
   CurrentScore: 0
 --- !u!1 &1905892418
 GameObject:
