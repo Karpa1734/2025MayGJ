@@ -28,6 +28,4 @@ public class Result : MonoBehaviour
             frame++;
         }
     }
-
-
 }
