@@ -9,7 +9,6 @@ public class TimeKeeper : MonoBehaviour
     {
         // 初期値を設定
         countDown = 30 * 60; // 30秒 × 60フレーム = 1800カウント
-
     }
 
     void Update()

@@ -470,9 +470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7360b9f93386c49429f6214459504949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPanel: {fileID: 1380991080}
+  resultPanel: {fileID: 708200631}
   scoreText: {fileID: 1354524058}
-  TimeText: {fileID: 0}
+  TimeText: {fileID: 1380991083}
   playerMove: {fileID: 1872317913}
 --- !u!1 &632246428
 GameObject:
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 1354524058}
   - component: {fileID: 1354524057}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

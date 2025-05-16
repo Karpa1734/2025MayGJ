@@ -52,7 +52,6 @@ public class FoodGenerator : MonoBehaviour
                 foodList.RemoveAt(i);
             }
         }
-
         frame++;
     }
 
@@ -69,7 +68,6 @@ public class FoodGenerator : MonoBehaviour
                 return FoodPrefabs[i];
             }
         }
-
         return FoodPrefabs[FoodPrefabs.Length - 1];
     }
 }

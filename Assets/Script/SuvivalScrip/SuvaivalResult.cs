@@ -25,8 +25,9 @@ public class SuvaivalResult : MonoBehaviour
 
     public void ShowResult()
     {
+        Debug.Log("ShowResult called");
         resultPanel.SetActive(true);
-        if (playerMove != null && scoreText != null)
+        if (playerMove != null && scoreText != null && TimeText != null)
         {
             scoreText.text = $"摂取カロリー：{playerMove.CurrentScore}cal";
             TimeText.text = $"食事時間：{CountUpTimer.countUp / 60}秒";

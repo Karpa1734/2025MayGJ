@@ -16,6 +16,7 @@ public class falloutCount : MonoBehaviour
             // 10回以上でゲームオーバー
             if (falloutObjectCount >= 10)
             {
+                Debug.Log("GameOver");
                 OnGameOver?.Invoke();
             }
         }
