@@ -4,47 +4,31 @@ using UnityEngine.UI;
 
 public class SuvaivalResult : MonoBehaviour
 {
-    int frame = 0;
+[SerializeField] private GameObject resultPanel;
+[SerializeField] private Text scoreText;
+[SerializeField] private PlayerMover playerMove;
 
-    [SerializeField] GameObject resultPanel;
-    [SerializeField] Text scoreText;
-    [SerializeField] PlayerMover playerMove;
+private void Start()
+{
+    resultPanel.SetActive(false);
+}
 
-    private void Start()
+private void OnEnable()
+{
+    falloutCount.OnGameOver += ShowResult; // イベント購読
+}
+
+private void OnDisable()
+{
+    falloutCount.OnGameOver -= ShowResult; // イベント解除
+}
+
+public void ShowResult()
+{
+    resultPanel.SetActive(true);
+    if (playerMove != null && scoreText != null)
     {
-        resultPanel.SetActive(false);
-        // イベントを購読
-        falloutCount.OnGameOver += HandleGameOver;
+        scoreText.text = $"摂取カロリー：{playerMove.CurrentScore}cal";
     }
-
-    private void OnDestroy()
-    {
-        // イベントの購読解除
-        falloutCount.OnGameOver -= HandleGameOver;
-    }
-
-    private void HandleGameOver()
-    {
-        resultPanel.SetActive(true);
-        if (playerMove != null && scoreText != null)
-        {
-            scoreText.text = "摂取カロリー：" + playerMove.CurrentScore.ToString() + "cal";
-        }
-    }
-
-    void Update()
-    {
-        if (TimeKeeper.countDown == 0)
-        {
-            resultPanel.SetActive(true);
-            if (playerMove != null && scoreText != null)
-            {
-                scoreText.text = "摂取カロリー：" + playerMove.CurrentScore.ToString() + "cal";
-            }
-        }
-        if (TimeKeeper.countDown < 0)
-        {
-            frame++;
-        }
-    }
+}
 }
