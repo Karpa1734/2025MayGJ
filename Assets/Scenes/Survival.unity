@@ -937,7 +937,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'FallOutCount:'
+  m_Text: "\u98DF\u3079\u6B8B\u3057\uFF1A0/10"
 --- !u!222 &1213869195
 CanvasRenderer:
   m_ObjectHideFlags: 0

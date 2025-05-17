@@ -46,7 +46,6 @@ public class TimeResult : MonoBehaviour
         resultPanel.SetActive(true);
         if (playerMove != null && TimeText != null)
         {
-            
             TimeText.text = $"êHéñéûä‘ÅF{string.Format("{0:00}:{1:00}", CountUpTime.seconds, CountUpTime.frames)}ïb";
         }
     }
