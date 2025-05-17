@@ -18,7 +18,7 @@ public class BGMSwitchSampleButton : MonoBehaviour {
   /// BGM1を再生
   /// </summary>
   public void PlayBGM1() {
-    PlayBGM(BGMPath.FANTASY14);
+    PlayBGM(BGMPath.TITLE);
   }
   
   /// <summary>
@@ -32,7 +32,7 @@ public class BGMSwitchSampleButton : MonoBehaviour {
   /// 重複するBGMを再生
   /// </summary>
   public void PlayDuplicateBGM() {
-    PlayBGM(BGMPath.HEARTBEAT01, 0.5f, true);
+    PlayBGM(BGMPath.TITLE, 0.5f, true);
   }
 
   //BGMを再生
@@ -56,7 +56,7 @@ public class BGMSwitchSampleButton : MonoBehaviour {
 
   //次に再生するBGMのパスを取得
   private string GetNextBGMPath() {
-    return BGMManager.Instance.GetCurrentAudioNames().Any(audioName => audioName == Path.GetFileNameWithoutExtension(BGMPath.FANTASY14)) ? BGMPath.BATTLE27 : BGMPath.FANTASY14;
+    return BGMManager.Instance.GetCurrentAudioNames().Any(audioName => audioName == Path.GetFileNameWithoutExtension(BGMPath.TITLE)) ? BGMPath.BATTLE27 : BGMPath.TITLE;
   }
   
   /// <summary>
