@@ -5,6 +5,9 @@ public class CountUpTimer : MonoBehaviour
 {
     [SerializeField] Text countupText;
     [SerializeField] private falloutCount falloutCounter;
+    [SerializeField] private PlayerMover playerMove;
+    [SerializeField] private GameObject panel;
+
     public static int countUp = 0;
     public int seconds = 0;
     public int frames = 0;
@@ -19,10 +22,11 @@ public class CountUpTimer : MonoBehaviour
 
     void Update()
     {
-        if (!falloutCounter.IsGameOver)
+        if ((!falloutCounter.IsGameOver || playerMove.CurrentScore < 10000) && !panel.activeSelf)
         {
             SuvaivalCount();
         }
+        
     }
 
     void SuvaivalCount()

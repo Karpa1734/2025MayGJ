@@ -7,6 +7,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float minX = -8f;
 
     [SerializeField] float maxX = 8f;
+<<<<<<< HEAD
     [SerializeField] private falloutCount falloutCounter;
     public int CurrentScore = 0;
 
@@ -59,3 +60,39 @@ public class PlayerMover : MonoBehaviour
         }
     }
 }
+=======
+    [SerializeField] private falloutCount falloutCounter;
+    
+    public int CurrentScore = 0;
+
+    void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
+    void Update()
+    {   //プレイヤーを止めてるとこ
+        if (TimeKeeper.countDown > 0)
+        {
+            if (falloutCounter != null && falloutCounter.IsGameOver) { return; }
+            if (CurrentScore > 10000) { return; }
+            float moveInput = Input.GetAxisRaw("Horizontal");
+            Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
+            transform.position += move;
+            float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
+            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        }
+    }
+
+    // 2D用の衝突検出（トリガー）
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Foods"))
+        {
+            CurrentScore += other.GetComponent<Food>().Score;
+            Destroy(other.gameObject); // ぶつかった相手だけ削除
+            Debug.Log(CurrentScore);
+        }
+    }
+}
+>>>>>>> timemode
