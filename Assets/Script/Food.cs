@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    [SerializeField] int FoodCode = 1;
+    public int FoodCode = 1;
     public int Score { get; private set; } // ‘¼‚©‚ç“Ç‚İæ‚è‰Â”\A‘‚«Š·‚¦•s‰Â
 
     /*

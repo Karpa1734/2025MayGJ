@@ -5,7 +5,7 @@ public class Calory : MonoBehaviour
 {
     [SerializeField] Text scoreText;               // 表示するText（UI）を設定
     [SerializeField] PlayerMover playerMove;       // PlayerMoveの参照を設定
-    [SerializeField] float scoreSpeed = 1000;      // 1秒あたりの加算速度（調整可能）
+    [SerializeField] float scoreSpeed = 1000f;     // 1秒あたりの加減算速度（調整可能）
 
     private float displayedScore = 0f;
 
@@ -15,14 +15,21 @@ public class Calory : MonoBehaviour
 
         float targetScore = playerMove.CurrentScore;
 
-        // 内部スコアに近づける（フレーム時間に応じて）
+        // targetScoreに近づける（増減対応）
         if (displayedScore < targetScore)
         {
             displayedScore += scoreSpeed * Time.deltaTime;
-
             if (displayedScore > targetScore)
             {
-                displayedScore = targetScore; // 超えたらピタッと止める
+                displayedScore = targetScore;
+            }
+        }
+        else if (displayedScore > targetScore)
+        {
+            displayedScore -= scoreSpeed * Time.deltaTime;
+            if (displayedScore < targetScore)
+            {
+                displayedScore = targetScore;
             }
         }
 

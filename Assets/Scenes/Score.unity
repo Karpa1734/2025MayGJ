@@ -448,6 +448,9 @@ MonoBehaviour:
   resultPanel: {fileID: 708200631}
   scoreText: {fileID: 1354524058}
   playerMove: {fileID: 1872317913}
+  character:
+  - {fileID: 1030561069}
+  - {fileID: 1514980938}
 --- !u!4 &435837776
 Transform:
   m_ObjectHideFlags: 0
@@ -1802,6 +1805,7 @@ MonoBehaviour:
   speed: 12
   minX: -8
   maxX: 8
+  dumbbellcnt: 0
   CurrentScore: 0
 --- !u!1 &1905892418
 GameObject:

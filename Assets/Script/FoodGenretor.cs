@@ -6,7 +6,7 @@ public class FoodGenerator : MonoBehaviour
     int frame = 0;
 
     [SerializeField] GameObject[] FoodPrefabs;  // 5種類のFoodプレハブを入れる
-    [SerializeField] float[] probabilities = new float[5] { 0.4f, 0.25f, 0.15f, 0.1f, 0.1f };
+    [SerializeField] float[] probabilities = new float[6] { 0.325f, 0.25f,0.225f, 0.025f, 0.15f, 0.025f };
     [SerializeField] float spawnRangeX = 4f; // 前の食べ物からどれだけ離れて良いか
 
     List<GameObject> foodList = new List<GameObject>();
@@ -21,7 +21,7 @@ public class FoodGenerator : MonoBehaviour
             // 最初の一回だけ完全ランダム
             if (foodList.Count == 0)
             {
-                lastFoodX = Random.Range(-8f, 8f);
+                lastFoodX = Random.Range(-3f, 3f);
             }
             else
             {
