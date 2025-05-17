@@ -16,7 +16,7 @@ public class falloutCount : MonoBehaviour
     {
         if (isSurvivel)
         {
-            FO.text = "FallOutCount:" + falloutObjectCount.ToString() + "/10";
+            FO.text = "食べ残し:" + falloutObjectCount.ToString() + "/10";
         }
         falloutCount.OnGameOver += () => { IsGameOver = true; };
     }
@@ -39,7 +39,7 @@ public class falloutCount : MonoBehaviour
                     falloutObjectCount++;
                     if (isSurvivel)
                     {
-                        FO.text = "FallOutCount:" + falloutObjectCount.ToString() + "/10";
+                        FO.text = "食べ残し:" + falloutObjectCount.ToString() + "/10";
                     }
                     break;
             }
