@@ -422,8 +422,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435837776}
-  - component: {fileID: 435837775}
   - component: {fileID: 435837777}
+  - component: {fileID: 435837778}
   m_Layer: 0
   m_Name: Result
   m_TagString: Untagged
@@ -431,21 +431,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &435837775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435837774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157c54551ec0fcf479469a43cfa56927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultPanel: {fileID: 708200631}
-  scoreText: {fileID: 1354524058}
-  playerMove: {fileID: 1872317913}
 --- !u!4 &435837776
 Transform:
   m_ObjectHideFlags: 0
@@ -473,6 +458,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fbd448a469b73419e389dd900adeb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &435837778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435837774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349e54c29bf58434ab1dbc9841315561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultPanel: {fileID: 708200631}
+  scoreText: {fileID: 1354524058}
+  playerMove: {fileID: 1872317913}
 --- !u!1 &632246428
 GameObject:
   m_ObjectHideFlags: 0

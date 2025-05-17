@@ -13,7 +13,7 @@ public class PlayerMover : MonoBehaviour
     }
     void Update()
     {
-        if (TimeKeeper.countDown > 0)
+        if (CurrentScore < 10000)
         {
             float moveInput = Input.GetAxisRaw("Horizontal");
             Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
