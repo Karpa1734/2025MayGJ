@@ -6,6 +6,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float minX = -8f;
     [SerializeField] float maxX = 8f;
     [SerializeField] private falloutCount falloutCounter;
+    
     public int CurrentScore = 0;
 
     void Start()
@@ -14,10 +15,11 @@ public class PlayerMover : MonoBehaviour
     }
 
     void Update()
-    {
+    {   //ƒvƒŒƒCƒ„[‚ðŽ~‚ß‚Ä‚é‚Æ‚±
         if (TimeKeeper.countDown > 0)
         {
             if (falloutCounter != null && falloutCounter.IsGameOver) { return; }
+            if (CurrentScore > 10000) { return; }
             float moveInput = Input.GetAxisRaw("Horizontal");
             Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
             transform.position += move;

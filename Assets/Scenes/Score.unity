@@ -281,6 +281,7 @@ MonoBehaviour:
   - 0.05
   spawnRangeX: 4
   falloutCounter: {fileID: 762457564}
+  playerMove: {fileID: 1872317913}
 --- !u!1 &217681779
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,8 +424,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435837776}
-  - component: {fileID: 435837775}
   - component: {fileID: 435837777}
+  - component: {fileID: 435837778}
   m_Layer: 0
   m_Name: Result
   m_TagString: Untagged
@@ -432,21 +433,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &435837775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435837774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 157c54551ec0fcf479469a43cfa56927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resultPanel: {fileID: 708200631}
-  scoreText: {fileID: 1354524058}
-  playerMove: {fileID: 1872317913}
 --- !u!4 &435837776
 Transform:
   m_ObjectHideFlags: 0
@@ -474,6 +460,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fbd448a469b73419e389dd900adeb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &435837778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435837774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb892b096ba93da429fbdf6e9617c038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultPanel: {fileID: 708200631}
+  TimeText: {fileID: 1354524058}
+  playerMove: {fileID: 1872317913}
+  CountUpTime: {fileID: 1192863298}
 --- !u!1 &632246428
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,10 +882,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192863296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09cd9f6fabeec1a49bcf42df157abc3c, type: 3}
+  m_Script: {fileID: 11500000, guid: b6adb8e8d5ee13542bed77ec7a2b232c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1423371578}
+  countupText: {fileID: 1423371578}
+  falloutCounter: {fileID: 762457564}
+  playerMove: {fileID: 1872317913}
+  panel: {fileID: 708200631}
+  seconds: 0
+  frames: 0
 --- !u!1 &1354524055
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +904,7 @@ GameObject:
   - component: {fileID: 1354524058}
   - component: {fileID: 1354524057}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +977,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6442\u53D6\u30AB\u30ED\u30EA\u30FC\uFF1A0kcal\n"
+  m_Text: "\u98DF\u4E8B\u6642\u9593\uFF1A0\u79D2\n"
 --- !u!222 &1354524059
 CanvasRenderer:
   m_ObjectHideFlags: 0
