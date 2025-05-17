@@ -7,32 +7,32 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float minX = -8f;
 
     [SerializeField] float maxX = 8f;
-<<<<<<< HEAD
     [SerializeField] private falloutCount falloutCounter;
     public int CurrentScore = 0;
 
     private int FreezeFrame = 0;
     public int dumbbellcnt = 0;
 
+    [SerializeField] private int Mode = 0;
     private void Start()
     {
-        //dumbbellcnt = 0;
+        dumbbellcnt = 0; FreezeFrame = 0; TimeKeeper.countDown = 0;
         BGMManager.Instance.Play(BGMPath.STAGE);
         Application.targetFrameRate = 60;
     }
 
     void Update()
     {
-        if (TimeKeeper.countDown > 0)
+        if (FreezeFrame <= 0)
         {
-            if (falloutCounter != null && falloutCounter.IsGameOver) { return; }
+            if ((Mode == 0 && TimeKeeper.countDown <= 0) || (Mode == 1 && CurrentScore >= 10000)  || (falloutCounter != null && falloutCounter.IsGameOver)) { return; }
             float moveInput = Input.GetAxisRaw("Horizontal");
             Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
             transform.position += move;
             float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
             transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
         }
-        //if (FreezeFrame>0) { FreezeFrame--; }
+        if (FreezeFrame>0) { FreezeFrame--; }
     }
 
     // 2D用の衝突検出（トリガー）
@@ -47,9 +47,9 @@ public class PlayerMover : MonoBehaviour
                     SEManager.Instance.Play(SEPath.BUTTER);
                     break;
                 case 6:
-                    //dumbbellcnt++;
+                    dumbbellcnt++;
                     SEManager.Instance.Play(SEPath.DUMBBELL);
-                    //FreezeFrame = 30;
+                    FreezeFrame = 30;
                     break;
                 default:
                     SEManager.Instance.Play(SEPath.ITEM);
@@ -60,39 +60,3 @@ public class PlayerMover : MonoBehaviour
         }
     }
 }
-=======
-    [SerializeField] private falloutCount falloutCounter;
-    
-    public int CurrentScore = 0;
-
-    void Start()
-    {
-        Application.targetFrameRate = 60;
-    }
-
-    void Update()
-    {   //プレイヤーを止めてるとこ
-        if (TimeKeeper.countDown > 0)
-        {
-            if (falloutCounter != null && falloutCounter.IsGameOver) { return; }
-            if (CurrentScore > 10000) { return; }
-            float moveInput = Input.GetAxisRaw("Horizontal");
-            Vector3 move = new Vector3(moveInput * speed * Time.deltaTime, 0, 0);
-            transform.position += move;
-            float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
-            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
-        }
-    }
-
-    // 2D用の衝突検出（トリガー）
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Foods"))
-        {
-            CurrentScore += other.GetComponent<Food>().Score;
-            Destroy(other.gameObject); // ぶつかった相手だけ削除
-            Debug.Log(CurrentScore);
-        }
-    }
-}
->>>>>>> timemode
