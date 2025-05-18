@@ -14,6 +14,7 @@ public class RankingSample : MonoBehaviour
     private Text _scoreText = default;
     [SerializeField]
     private Button _sendButton = default; // ボタンをInspectorから割り当てるためのフィールド
+    private string _RunkingName = "ランキングサンプル";
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class RankingSample : MonoBehaviour
         {
             Statistics = new List<StatisticUpdate>{
         new StatisticUpdate{
-          StatisticName = "ランキングサンプル",   //ランキング名(統計情報名)
+          StatisticName = _RunkingName,   //ランキング名(統計情報名)
           Value = score, // ランダムなスコア
         }
       }

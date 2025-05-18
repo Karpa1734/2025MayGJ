@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Result : MonoBehaviour
 {
+    public int resuleScore = 0;
     int frame = 0;
     bool ClearCall = false;
     [SerializeField] GameObject resultPanel; 
     [SerializeField] Text scoreText;              // 表示するText（UI）を設定
     [SerializeField] PlayerMover playerMove;       // PlayerMoveの参照を設定
     [SerializeField] GameObject[] character;       // PlayerMoveの参照を設定
+    [SerializeField] ScoreSend scoreSend;
     private void Start()
     {
         resultPanel.SetActive(false);
@@ -38,10 +40,14 @@ public class Result : MonoBehaviour
                 ClearCall = true;
             }
 
-
             if (playerMove != null && scoreText != null)
             {
                 scoreText.text = "摂取カロリー：" + playerMove.CurrentScore.ToString() + "kcal";
+                resuleScore = playerMove.CurrentScore;
+                if (scoreSend != null)
+                {
+                    scoreSend.SendScoreToPlayFab(resuleScore);
+                }
             }
         }
         if (TimeKeeper.countDown < 0)

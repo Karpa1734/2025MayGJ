@@ -7,16 +7,18 @@ using System.Text;
 
 // <summary>
 // PlayFabで一意なcustomIDのログイン処理を行うクラス
+// このSCriptは全体で共有
 // </summary>
 
 public class PlayFabLogin : MonoBehaviour
 {
     // アカウントを新規作成するかどうか
-    bool shouldCreateAccount;
+    private bool shouldCreateAccount;
     // customIDを代入しておく変数
-    string customID;
+    private string customID;
     // customIDに使用する文字一覧
     static readonly string ID_CHARACTERS = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private int idLength = 32;
 
     // ==============================================================
     // ログイン処理
@@ -62,6 +64,8 @@ public class PlayFabLogin : MonoBehaviour
 
         Debug.Log("ログインに成功しました");
         Debug.Log($"CustomID：{customID}");
+        // --- ここでPlayerSetを初期化 ---
+        PlayerSet.Instance?.InitializePlayer(result);
     }
 
     // ログイン失敗時の処理
@@ -108,7 +112,6 @@ public class PlayFabLogin : MonoBehaviour
     // customIDを生成するメソッド
     string GenerateCustomID()
     {
-        int idLength = 32;
         StringBuilder stringBuilder = new StringBuilder(idLength);
 
         for (int i = 0; i < idLength; i++)
