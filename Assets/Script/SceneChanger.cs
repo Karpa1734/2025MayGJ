@@ -1,9 +1,13 @@
 using KanKikuchi.AudioManager;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneChanger : MonoBehaviour
 {
+    [SerializeField] Text Volume; 
+    private int VolumeValue = 100; //‰¹—Ê‚Ì’l
     private void Start()
     {
         BGMManager.Instance.Play(BGMPath.TITLE);
@@ -21,6 +25,21 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("Survival");
     }
+    public void AddVolume(int addV)
+    {
+        int newVolume = Mathf.Clamp(VolumeValue + addV, 0, 100);
+
+        if (newVolume != VolumeValue)
+        {
+            VolumeValue = newVolume;
+            Volume.text = VolumeValue.ToString();
+            float normalizedVolume = VolumeValue / 100f;
+            BGMManager.Instance.ChangeBaseVolume(normalizedVolume);
+            SEManager.Instance.ChangeBaseVolume(normalizedVolume);
+        }
+    }
+
+
     public void EndGame()
     {
 #if UNITY_EDITOR
