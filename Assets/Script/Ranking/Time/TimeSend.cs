@@ -5,43 +5,48 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ランキングのサンプル
+/// TIMEランキング
 /// </summary>
-public class TimeeSend : MonoBehaviour
+public class TimeSend : MonoBehaviour
 {
-    private string _RunkingName = "ScoreRunking";
+    private string _RunkingName = "TimeRanking";
 
-    /// <summary>
-    /// スコアをPlayFabに送信する
-    /// </summary>
-    public void SendScoreToPlayFab(int score)
+    //数字の整数化
+    public void SendScoreToPlayFab(int seconds, int frames)
     {
+        int combinedScore = seconds * 100 + frames;
+        SendScoreToPlayFab(combinedScore);
+    }
 
-        //UpdatePlayerStatisticsRequestのインスタンスを生成
+    // スコア送信（昇順用に修正）
+    public void SendScoreToPlayFab(int time)
+    {
+        // 昇順ランキング用にスコアを修正
+        int modifiedScore = int.MaxValue - time;
+
         var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>{
                 new StatisticUpdate{
                     StatisticName = _RunkingName,
-                    Value = score, // スコア
+                    Value = modifiedScore,  // 修正したスコアを送信
                 }
             }
         };
 
-        // スコア送信
-        Debug.Log($"スコア(統計情報)の更新開始");
+        Debug.Log($"時間(統計情報)の更新開始");
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnUpdatePlayerStatisticsSuccess, OnUpdatePlayerStatisticsFailure);
     }
 
     //スコア(統計情報)の更新成功
     private void OnUpdatePlayerStatisticsSuccess(UpdatePlayerStatisticsResult result)
     {
-        Debug.Log($"スコア(統計情報)の更新が成功しました");
+        Debug.Log($"時間(統計情報)の更新が成功しました");
     }
 
     //スコア(統計情報)の更新失敗
     private void OnUpdatePlayerStatisticsFailure(PlayFabError error)
     {
-        Debug.LogError($"スコア(統計情報)更新に失敗しました\n{error.GenerateErrorReport()}");
+        Debug.LogError($"時間(統計情報)更新に失敗しました\n{error.GenerateErrorReport()}");
     }
 }

@@ -9,6 +9,7 @@ public class TimeResult : MonoBehaviour
     [SerializeField] private Text TimeText;
     [SerializeField] private PlayerMover playerMove;
     [SerializeField] private CountUpTimer CountUpTime;
+    [SerializeField] private TimeSend timeSend;
     [SerializeField] GameObject[] character;       // PlayerMoveの参照を設定
 
     bool ClearCall = false;
@@ -44,9 +45,20 @@ public class TimeResult : MonoBehaviour
     {
         Debug.Log("ShowResult called");
         resultPanel.SetActive(true);
+
         if (playerMove != null && TimeText != null)
         {
             TimeText.text = $"食事時間：{string.Format("{0:00}:{1:00}", CountUpTime.seconds, CountUpTime.frames)}秒";
+
+            // 秒とフレームを直接渡してスコア送信
+            if (timeSend != null)
+            {
+                timeSend.SendScoreToPlayFab(CountUpTime.seconds, CountUpTime.frames);
+            }
+            else
+            {
+                Debug.LogError("ScoreSend component is not assigned!");
+            }
         }
     }
 }

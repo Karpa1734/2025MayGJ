@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ランキングのサンプル
+/// ランキングのをScoreの降順で送る
 /// </summary>
 public class ScoreSend : MonoBehaviour
 {
-    private string _RunkingName = "ScoreRunking";
+    private string _RunkingName = "ScoreRanking";
 
     /// <summary>
     /// スコアをPlayFabに送信する
@@ -23,7 +23,7 @@ public class ScoreSend : MonoBehaviour
             Statistics = new List<StatisticUpdate>{
                 new StatisticUpdate{
                     StatisticName = _RunkingName,
-                    Value = score, // スコア
+                    Value = score,
                 }
             }
         };

@@ -24,7 +24,7 @@ public class Result : MonoBehaviour
         if (TimeKeeper.countDown == 0)
         {
 
-            resultPanel.SetActive(true);  
+            resultPanel.SetActive(true);
             if (!ClearCall)
             {
                 if (playerMove.dumbbellcnt >= 8)
