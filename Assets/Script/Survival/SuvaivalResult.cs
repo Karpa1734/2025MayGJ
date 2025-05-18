@@ -11,6 +11,7 @@ public class SuvaivalResult : MonoBehaviour
     [SerializeField] private PlayerMover playerMove;
     [SerializeField] private falloutCount falloutCounter;
     [SerializeField] private CountUpTimer CountUpTime;
+    [SerializeField] private SurvivalSend survivalSend;
     [SerializeField] GameObject[] character;       // PlayerMoveの参照を設定
     bool ClearCall = false;
 
@@ -50,6 +51,11 @@ public class SuvaivalResult : MonoBehaviour
         {
             scoreText.text = $"摂取カロリー：{playerMove.CurrentScore}cal";
             TimeText.text = $"食事時間：{string.Format("{0:00}:{1:00}", CountUpTime.seconds, CountUpTime.frames)}秒";
+            //survivalSendに送ってる変数
+            if (survivalSend != null)
+            {
+                survivalSend.SendScoreToPlayFab(playerMove.CurrentScore);
+            }
         }
     }
 }
