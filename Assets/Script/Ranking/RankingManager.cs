@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RunkingManager : MonoBehaviour
+public class RankingManager : MonoBehaviour
 {
     public void ChangeSceneScoreRanking()
     {

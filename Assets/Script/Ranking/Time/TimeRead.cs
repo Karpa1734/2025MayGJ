@@ -15,8 +15,8 @@ public class TimeRead : MonoBehaviour
     [SerializeField]
     private PlayerSet _playerSet = default;
 
-    private string _RunkingName = "TimeRanking";
-    private int _GetRunking = 10;
+    private string _RankingName = "TimeRanking";
+    private int _GetRanking = 30;
     private bool _isLoginAttempted = false;
 
     private void Start()
@@ -55,9 +55,9 @@ public class TimeRead : MonoBehaviour
 
         var request = new GetLeaderboardRequest
         {
-            StatisticName = _RunkingName,
+            StatisticName = _RankingName,
             StartPosition = 0,
-            MaxResultsCount = _GetRunking
+            MaxResultsCount = _GetRanking
         };
 
         Debug.Log($"ランキング(リーダーボード)の取得開始");
@@ -71,8 +71,13 @@ public class TimeRead : MonoBehaviour
         _rankingText.text = "";
         foreach (var entry in result.Leaderboard)
         {
-            // クリア時間を昇順で表示するために、int.MaxValueから引いた値を表示
-            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, クリア時間 : {int.MaxValue - entry.StatValue}";
+            // クリア時間を昇順で表示するために、int.MaxValueから引いた値を取得
+            int rawTime = int.MaxValue - entry.StatValue;
+
+            // 4桁の整数を小数点第二位までの小数に変換（例: 1234 → 12.34）
+            string formattedTime = (rawTime / 100.0).ToString("F2");
+
+            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, クリア時間 : {formattedTime}";
         }
     }
 

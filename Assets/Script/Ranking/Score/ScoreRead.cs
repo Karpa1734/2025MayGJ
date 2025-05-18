@@ -15,8 +15,8 @@ public class ScoreRead : MonoBehaviour
     [SerializeField]
     private PlayerSet _playerSet = default;
 
-    private string _RunkingName = "ScoreRanking";
-    private int _GetRunking = 10;
+    private string _RankingName = "ScoreRanking";
+    private int _GetRanking = 30;
     private bool _isLoginAttempted = false;
 
     private void Start()
@@ -55,9 +55,9 @@ public class ScoreRead : MonoBehaviour
 
         var request = new GetLeaderboardRequest
         {
-            StatisticName = _RunkingName,
+            StatisticName = _RankingName,
             StartPosition = 0,
-            MaxResultsCount = _GetRunking
+            MaxResultsCount = _GetRanking
         };
 
         Debug.Log($"ランキング(リーダーボード)の取得開始");

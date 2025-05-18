@@ -15,8 +15,8 @@ public class SurvivalRead : MonoBehaviour
     [SerializeField]
     private PlayerSet _playerSet = default;
 
-    private string _RankingName = "SurvivalRanking"; // 修正: スペルミスを修正 (Runking → Ranking)
-    private int _GetRanking = 10;
+    private string _RankingName = "SurvivalRanking";
+    private int _GetRanking = 30;
     private bool _isLoginAttempted = false;
 
     private void Start()
@@ -66,12 +66,10 @@ public class SurvivalRead : MonoBehaviour
     {
         Debug.Log($"ランキング(リーダーボード)の取得に成功しました");
 
-        _rankingText.text = "秒間スコアランキング\n";
+        _rankingText.text = "";
         foreach (var entry in result.Leaderboard)
         {
-            // 整数値(10倍された値)を秒間スコアに変換
-            float scorePerSecond = entry.StatValue / 10f;
-            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, 秒間スコア : {scorePerSecond:F1}";
+            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, 体重が{entry.StatValue}Kcal増えた！";
         }
     }
 

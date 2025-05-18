@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// </summary>
 public class TimeSend : MonoBehaviour
 {
-    private string _RunkingName = "TimeRanking";
+    private string _RankingName = "TimeRanking";
 
     //数字の整数化
     public void SendScoreToPlayFab(int seconds, int frames)
@@ -28,7 +28,7 @@ public class TimeSend : MonoBehaviour
         {
             Statistics = new List<StatisticUpdate>{
                 new StatisticUpdate{
-                    StatisticName = _RunkingName,
+                    StatisticName = _RankingName,
                     Value = modifiedScore,  // 修正したスコアを送信
                 }
             }

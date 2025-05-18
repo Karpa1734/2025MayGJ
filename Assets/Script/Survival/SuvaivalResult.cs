@@ -51,14 +51,10 @@ public class SuvaivalResult : MonoBehaviour
         {
             scoreText.text = $"摂取カロリー：{playerMove.CurrentScore}cal";
             TimeText.text = $"食事時間：{string.Format("{0:00}:{1:00}", CountUpTime.seconds, CountUpTime.frames)}秒";
-
+            //survivalSendに送ってる変数
             if (survivalSend != null)
             {
-                survivalSend.SendCalculatedScore(
-                    playerMove.CurrentScore,
-                    CountUpTime.seconds,
-                    CountUpTime.frames
-                );
+                survivalSend.SendScoreToPlayFab(playerMove.CurrentScore);
             }
         }
     }

@@ -30,17 +30,17 @@ public class ScoreSend : MonoBehaviour
 
         // スコア送信
         Debug.Log($"スコア(統計情報)の更新開始");
-        PlayFabClientAPI.UpdatePlayerStatistics(request, OnUpdatePlayerStatisticsSuccess, OnUpdatePlayerStatisticsFailure);
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnSuccess, OnFailure);
     }
 
     //スコア(統計情報)の更新成功
-    private void OnUpdatePlayerStatisticsSuccess(UpdatePlayerStatisticsResult result)
+    private void OnSuccess(UpdatePlayerStatisticsResult result)
     {
         Debug.Log($"スコア(統計情報)の更新が成功しました");
     }
 
     //スコア(統計情報)の更新失敗
-    private void OnUpdatePlayerStatisticsFailure(PlayFabError error)
+    private void OnFailure(PlayFabError error)
     {
         Debug.LogError($"スコア(統計情報)更新に失敗しました\n{error.GenerateErrorReport()}");
     }
