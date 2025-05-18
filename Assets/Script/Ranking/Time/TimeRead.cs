@@ -77,7 +77,7 @@ public class TimeRead : MonoBehaviour
             // 4桁の整数を小数点第二位までの小数に変換（例: 1234 → 12.34）
             string formattedTime = (rawTime / 100.0).ToString("F2");
 
-            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, クリア時間 : {formattedTime}";
+            _rankingText.text += $"{Environment.NewLine}順位 : {entry.Position + 1}, 完食した時間 : {formattedTime}秒";
         }
     }
 
